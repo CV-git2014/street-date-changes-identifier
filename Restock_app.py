@@ -121,7 +121,8 @@ if side_selector == 'Update Street Dates':
             if not ti_subset_df.empty:
                 ti_subset_df[['Title','msc1', 'msc2']] = ti_subset_df['Title_y'].str.rsplit(' ', 2, expand = True)
                 ti_subset_df.drop(['Title_y', 'msc1', 'msc2'],axis = 'columns', inplace = True)
-
+            else:
+                ti_subset_df.rename(columns={'Title_y': "Title"}, inplace=True)
             #---------------------------------------------------------------
             #Merge web data with our think indie data from the end cap sheet
             #---------------------------------------------------------------
