@@ -118,7 +118,7 @@ if side_selector == 'Update Street Dates':
             ti_subset_df = (final_updated_df[final_updated_df['Vendor'] == 'think indie'])
             ti_subset_df = ti_subset_df.loc[ti_subset_df['On The Site?'] != 'EMBARGO']
             if not ti_subset_df.empty:
-                ti_subset_df[['Title','msc1', 'msc2']] = ti_subset_df['Title_y'].str.rsplit(' ', 2, expand = True)
+                ti_subset_df[['Title','msc1', 'msc2']] = ti_subset_df['Title_y'].str.rsplit(pat=' ', n=2, expand = True)
                 ti_subset_df.drop(['Title_y', 'msc1', 'msc2'],axis = 'columns', inplace = True)
             else:
                 ti_subset_df.rename(columns={'Title_y': "Title"}, inplace=True)
