@@ -38,7 +38,7 @@ if side_selector == 'Update Street Dates':
     if alliance is not None and end_cap is not None:
         #Reading and cleaning functions for each dataframe
         def clean_alliance(alliance):
-            alliance_df  = pd.read_excel(alliance, skiprows=10)
+            alliance_df  = pd.read_excel(alliance, skiprows=9)
             alliance_df.drop([0], inplace=True)
             alliance_df.drop(['Product', 'Qty', 'Adj', 'Sell','Adj.1','Spcl','Non','Media','CutOut', 'Last Return','BO','Num'], axis = "columns", inplace = True)
             alliance_df.UPC = alliance_df.UPC.astype(int)
