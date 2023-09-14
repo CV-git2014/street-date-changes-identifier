@@ -138,7 +138,7 @@ if side_selector == 'Update Street Dates':
             final_updated_df.drop_duplicates(subset = ['UPC'], inplace = True)
             final_updated_df = final_updated_df[final_updated_df['Vendor'] != 'think indie'] 
             final_updated_df.rename(columns = {'Title_y' : 'Title'}, inplace = True)
-            final_updated_df = final_updated_df.append(ti_subset_df, ignore_index = True)
+            final_updated_df = pd.concat([final_updated_df, ti_subset_df], ignore_index = True)
             final_updated_df.drop(['Mock-Up Made?','On The Site?', 'release_street_date', 'Date Compare', 'Description'],axis = 'columns', inplace = True)
             final_updated_df.rename(columns = {'Street' : 'Updated Street Date From Alliance', 'Release/Street Date' : 'Updated Date From TI', 'Street Date On Site (1/1/21 means TBA)' : 'Old Street Date'}, inplace = True)
             final_updated_df['Updated Street Date From Alliance'] = pd.to_datetime(final_updated_df['Updated Street Date From Alliance']).dt.date
