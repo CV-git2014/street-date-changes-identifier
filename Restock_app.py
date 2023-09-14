@@ -1,8 +1,6 @@
 import pandas as pd
-import numpy as np
 from datetime import datetime
 import requests
-from requests import get
 from bs4 import BeautifulSoup
 import streamlit as st
 
@@ -108,7 +106,8 @@ if side_selector == 'Update Street Dates':
             #Stripping off unintentional spaces and extracting dates 
             #-------------------------------------------------------
             think_indie_df['release_street_date'] = think_indie_df['release_street_date'].str.rstrip()
-            think_indie_df[['Description', 'Release/Street Date']] = think_indie_df['release_street_date'].str.rsplit(' ', 1, expand = True)
+            st.write(think_indie_df)
+            think_indie_df[['Description', 'Release/Street Date']] = think_indie_df['release_street_date'].str.rsplit(pat=' ', n=1, expand = True)
             think_indie_df = think_indie_df[think_indie_df['Release/Street Date'] != 'TBD']
             think_indie_df['Release/Street Date'] = pd.to_datetime(think_indie_df['Release/Street Date'])
             think_indie_df = think_indie_df[think_indie_df['Release/Street Date'] > today]
